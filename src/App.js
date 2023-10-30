@@ -1,24 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Bebidas from './components/pages/Refrescos';
+import PaginaPrincipal from './components/pages/Principal';
+
+import NavBar from './components/moleculas/NavBar';
+import Logo from './img/logo.png';
+import './css/App.css';
+import './css/Cards.css';
+
+const Datos = {
+  NavBar: [
+    {
+      logosrc: Logo,
+      logoWidth: "170",
+      logoHeight: "110",
+      titulo1: "titulo_blanco",
+      titulo: "Taco Facil",
+      ClassName: "boton4",
+    },
+    {
+      redirecciones: "/",
+      text: "Tacos",
+      ClassName: "card-btn2",
+    },
+    {
+      redirecciones: "/Bebidas",
+      text: "Refresco",
+      ClassName: "card-btn2",
+    },
+    {
+      redirecciones: "/minecraft",
+      text: "Ventas",
+      ClassName: "card-btn2",
+    },
+    {
+      redirecciones: "/minecraft",
+      text: "Pedidos",
+      ClassName: "card-btn2",
+    },
+  ],
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar datos={Datos.NavBar} />
+ 
+        <Routes>
+          <Route path="/" element={<PaginaPrincipal />} />
+        
+          <Route path="/Bebidas" element={<Bebidas />} />
+       
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
